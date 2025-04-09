@@ -3,6 +3,6 @@
     themes: light --default, dark --prefersdark, silk;
 }
 
-h1 {
+.font-accent {
     font-family: 'Outfit', sans-serif;
 }
