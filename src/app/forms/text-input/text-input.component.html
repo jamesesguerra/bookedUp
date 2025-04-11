@@ -1,0 +1,36 @@
+<div class="mb-3">
+    <fieldset class="fieldset">
+        <legend class="fieldset-legend">{{ label() }}</legend>
+        <input
+            [type]="type()"
+            [name]="label()"
+            class="input w-full"
+            [formControl]="control"
+            [placeholder]="label()"
+            [class.input-error]="control.invalid && control.touched"
+        >
+        @if (control.hasError('required') && control.touched) {
+            <p class="fieldset-label text-error">
+                Please enter a {{ label() }}
+            </p>
+        }
+
+        @if (control.hasError('minlength') && control.touched) {
+            <div class="fieldset-label text-error">
+                {{ label() }} must be at least {{ control.errors?.['minlength'].requiredLength }} characters
+            </div>
+        }
+
+        @if (control.hasError('maxlength') && control.touched) {
+            <div class="fieldset-label text-error">
+                {{ label() }} must be at most {{ control.errors?.['maxlength'].requiredLength }} characters
+            </div>
+        }
+
+        @if (control.hasError('isMatching') && control.touched) {
+            <div class="fieldset-label text-error">
+                Passwords do not match
+            </div>
+        }
+    </fieldset>
+</div>
